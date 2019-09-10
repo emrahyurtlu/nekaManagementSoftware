@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->integer('mass_unit_id');
             $table->string('name');
             $table->string('mass');
-            $table->string('barcode');
+            $table->string('barcode')->unique();
             $table->string('image');
             $table->timestamps();
         });

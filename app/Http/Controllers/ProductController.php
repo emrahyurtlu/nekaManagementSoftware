@@ -10,7 +10,6 @@ use App\Models\Product;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Storage;
 
 class ProductController extends FileController
 {
@@ -57,7 +56,7 @@ class ProductController extends FileController
             $product->mass_unit_id = $request->get('mass_unit_id');
 
             if ($request->hasFile('image')) {
-                $product->image = $this->uploadFile($request, 'public/products');
+                $product->image = $this->uploadFile( 'products');
             }
 
             $product->save();
@@ -110,8 +109,8 @@ class ProductController extends FileController
         $product->mass_unit_id = $request->get('mass_unit_id');
 
         if ($request->hasFile('image')) {
-            Storage::disk('local')->delete("public/products/{$product->image}");
-            $product->image = $this->uploadFile($request, 'public/products');
+            $this->deleteFile($product->image);
+            $product->image = $this->uploadFile('products');
         }
 
         $product->save();
@@ -127,7 +126,7 @@ class ProductController extends FileController
      */
     public function destroy(Product $product)
     {
-        $this->deleteFile("public/products/{$product->image}");
+        $this->deleteFile($product->image);
         $product->delete();
     }
 }

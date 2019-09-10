@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    $('.select2').select2({
+    });
+
     // DELETE CONFIRMATION
     $('.delete').click(function (e) {
         e.preventDefault();

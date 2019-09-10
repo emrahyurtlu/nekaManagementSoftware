@@ -33,7 +33,7 @@
 
                 <div class="form-group">
                     <label for="brand_id">Marka Seçiniz</label>
-                    <select class="form-control" name="brand_id" id="brand_id" required>
+                    <select class="form-control select2" name="brand_id" id="brand_id" required>
                         <option>Lütfen seçim yapınız</option>
                         @foreach($brands as $brand)
                             <option value="{{$brand->id}}">
@@ -48,7 +48,7 @@
 
                 <div class="form-group">
                     <label for="category_id">Kategori Seçiniz</label>
-                    <select class="form-control" name="category_id" id="category_id" required>
+                    <select class="form-control select2" name="category_id" id="category_id" required>
                         <option>Lütfen seçim yapınız</option>
                         @foreach($categories as $category)
                             <option value="{{$category->id}}">
@@ -71,7 +71,7 @@
 
                 <div class="form-group">
                     <label for="mass_unit_id">Ağırlık Birimi Seçiniz</label>
-                    <select class="form-control" name="mass_unit_id" id="mass_unit_id" required>
+                    <select class="form-control select2" name="mass_unit_id" id="mass_unit_id" required>
                         <option>Lütfen seçim yapınız</option>
                         @foreach($massUnits as $massUnit)
                             <option value="{{$massUnit->id}}">

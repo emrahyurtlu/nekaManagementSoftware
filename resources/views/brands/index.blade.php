@@ -22,7 +22,7 @@
                 @foreach($brands as $brand)
                     <tr>
                         <td>
-                            <img src="/storage/brands/{{$brand->image}}" alt="{{$brand->name}}" width="100" class="img-thumbnail">
+                            <img src="{{env('AWS_URL')}}/{{$brand->image}}" alt="{{$brand->name}}" width="100" class="img-thumbnail">
                         </td>
                         <td>{{$brand->name}}</td>
                         <td>

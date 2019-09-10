@@ -27,7 +27,7 @@
                 <div class="form-group">
                     <label for="image">Logo Yükle</label>
                     <div class="mb-2">
-                        <img src="/storage/brands/{{$brand->image}}" alt="{{$brand->name}}" width="100" class="img-thumbnail">
+                        <img src="{{env('AWS_URL')}}/{{$brand->image}}" alt="{{$brand->name}}" width="100" class="img-thumbnail">
                     </div>
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="image" name="image">

@@ -47,7 +47,7 @@ class BrandController extends FileController
             $brand->name = $request->get('name');
 
             if ($request->hasFile('image')) {
-                $brand->image = $this->uploadFile($request, 'public/brands');
+                $brand->image = $this->uploadFile( 'brands');
             }
 
             $brand->save();
@@ -91,8 +91,8 @@ class BrandController extends FileController
     {
         $brand->name = $request->get('name');
         if ($request->hasFile('image')) {
-            Storage::disk('local')->delete("public/brands/{$brand->image}");
-            $brand->image = $this->uploadFile($request, 'public/brands');
+            $this->deleteFile($brand->image);
+            $brand->image = $this->uploadFile('brands');
         }
 
         $brand->save();
@@ -109,7 +109,7 @@ class BrandController extends FileController
     public function destroy(Brand $brand)
     {
         if ($brand->isUsed() == false) {
-            $this->deleteFile("public/brands/{$brand->image}");
+            $this->deleteFile($brand->image);
             $brand->delete();
         } else {
             throw new Exception('Sistemde bu markaya ait ürünler bulunmaktadır. Silinemez.');

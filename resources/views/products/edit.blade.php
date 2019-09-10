@@ -89,7 +89,7 @@
                 <div class="form-group">
                     <label for="image">Fotoğraf Yükle</label>
                     <div class="mb-2">
-                        <img src="/storage/products/{{$product->image}}" alt="{{$product->name}}" width="100"
+                        <img src="{{env('AWS_URL')}}/{{$product->image}}" alt="{{$product->name}}" width="100"
                              class="img-thumbnail">
                     </div>
                     <div class="custom-file">
