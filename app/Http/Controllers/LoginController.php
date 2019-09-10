@@ -18,8 +18,8 @@ class LoginController extends Controller
     {
         $email = $request->get('email');
         $password = $request->get('password');
-        $user = User::all()->where('email', '==', $email)->where('password', '==', $password)->first;
-        if ($user !== null) {
+        $user = User::all()->where('email', '==', $email)->where('password', '==', $password)->first();
+        if ($user) {
             Session::put('user', $user);
             return redirect()->to('/products');
         } else {
