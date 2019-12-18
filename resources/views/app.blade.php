@@ -3,7 +3,7 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Koala Management Software</title>
+    <title>Neka Management Software</title>
     @csrf
 
     {{--CDN--}}
