@@ -1,3 +1,8 @@
+let $ = require("jquery");
+require("select2")($);
+require("bootstrap");
+require("./form-validation");
+
 $(document).ready(function () {
     $('.select2').select2({});
 
