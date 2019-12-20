@@ -2,9 +2,11 @@ let $ = require("jquery");
 require("select2")($);
 require("bootstrap");
 require("./form-validation");
+require("datatables.net-bs4")(window, $);
 
 $(document).ready(function () {
     $('.select2').select2({});
+    $('.data-table').DataTable();
 
     // DELETE CONFIRMATION
     $('.delete').click(function (e) {

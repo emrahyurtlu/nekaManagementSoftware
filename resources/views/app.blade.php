@@ -6,19 +6,12 @@
     <title>Neka Management Software</title>
     @csrf
 
-    {{--CDN--}}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="{{asset('lib/DataTables/datatables.min.css')}}"/>
-
-    <script src="{{asset('js/bundle.js')}}"></script>
-
-
-
-
     <script src="https://kit.fontawesome.com/c3428d3c0e.js"></script>
+    <script src="{{asset('js/bundle.js')}}"></script>
 </head>
 <body>
 @if(session()->has('user'))

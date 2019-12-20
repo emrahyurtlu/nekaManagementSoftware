@@ -10,7 +10,7 @@
         <div class="card-body">
             <a href="/categories/create" class="btn btn-primary"><i class="fas fa-plus"></i> Yeni Ekle</a>
             <hr>
-            <table id="dataTable">
+            <table class="data-table">
                 <thead>
                 <tr>
                     <th>Kategori</th>
