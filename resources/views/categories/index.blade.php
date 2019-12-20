@@ -13,6 +13,7 @@
             <table class="data-table">
                 <thead>
                 <tr>
+                    <th>Üst Kategori</th>
                     <th>Kategori</th>
                     <th>İşlemler</th>
                 </tr>
@@ -20,15 +21,27 @@
                 <tbody>
                 @foreach($categories as $item)
                     <tr>
+
+                        <td>
+                            @if($item->root != null)
+                                {{$item->root->name}}
+                            @else
+                                Üst kategori seçilmedi.
+                            @endif
+                        </td>
+
                         <td>{{$item->name}}</td>
                         <td>
                             <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     İşlemler
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="/categories/{{$item->id}}/edit"><i class="fas fa-edit"></i> Düzenle</a>
-                                    <a class="dropdown-item delete" href="/categories/{{$item->id}}"><i class="fas fa-trash"></i> Sil</a>
+                                    <a class="dropdown-item" href="/categories/{{$item->id}}/edit"><i
+                                            class="fas fa-edit"></i> Düzenle</a>
+                                    <a class="dropdown-item delete" href="/categories/{{$item->id}}"><i
+                                            class="fas fa-trash"></i> Sil</a>
                                 </div>
                             </div>
                         </td>

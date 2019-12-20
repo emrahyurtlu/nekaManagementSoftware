@@ -18,7 +18,8 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view('categories.index', ['categories' => $categories]);
+        $rootCategories = Category::all()->where('parent_id', '==', 0);
+        return view('categories.index', ['categories' => $categories, 'rootCategories' => $rootCategories]);
     }
 
     /**
@@ -28,7 +29,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('categories.create');
+        $rootCategories = Category::all()->where('parent_id', '==', 0);
+        return view('categories.create', ['rootCategories' => $rootCategories]);
     }
 
     /**
@@ -43,6 +45,7 @@ class CategoryController extends Controller
 
             $category = new Category();
             $category->name = $request->get('name');
+            $category->parent_id = $request->get('parent_id');
 
             $category->save();
 
@@ -71,7 +74,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('categories.edit', ['category' => $category]);
+        $rootCategories = Category::all()->where('parent_id', '==', 0);
+        return view('categories.edit', ['category' => $category, 'rootCategories' => $rootCategories]);
     }
 
     /**
@@ -84,6 +88,7 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $category->name = $request->get('name');
+        $category->parent_id = $request->get('parent_id');
         $category->save();
         return redirect()->to('/categories');
     }
