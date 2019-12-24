@@ -32,8 +32,8 @@
                             Bu alan boş bırakılamaz.
                         </div>
                     </div>
-
                 </div>
+
                 <button type="submit" class="btn btn-primary">Kaydet</button>
             </form>
         </div>

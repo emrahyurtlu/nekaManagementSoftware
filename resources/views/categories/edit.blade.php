@@ -30,6 +30,7 @@
                         Bu alan boş bırakılamaz.
                     </div>
                 </div>
+
                 <div class="form-group">
                     <label for="name">Kategori Adı</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Örn: Süt Ürünleri" required
@@ -38,6 +39,22 @@
                         Bu alan boş bırakılamaz.
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label for="image">İkon Yükle</label>
+                    <div class="mb-2">
+                        <img src="{{env('AWS_URL')}}/{{$category->image}}" alt="{{$category->name}}" width="100" class="img-thumbnail">
+                    </div>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="image" name="image">
+                        <label class="custom-file-label" for="image">Dosya seçiniz</label>
+                        <div class="invalid-feedback">
+                            Bu alan boş bırakılamaz.
+                        </div>
+                    </div>
+
+                </div>
+
                 <button type="submit" class="btn btn-primary">Kaydet</button>
             </form>
         </div>

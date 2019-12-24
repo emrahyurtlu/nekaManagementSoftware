@@ -13,6 +13,7 @@
             <table class="data-table">
                 <thead>
                 <tr>
+                    <th>İkon</th>
                     <th>Üst Kategori</th>
                     <th>Kategori</th>
                     <th>İşlemler</th>
@@ -21,7 +22,11 @@
                 <tbody>
                 @foreach($categories as $item)
                     <tr>
-
+                        <td>
+                            @if($item->image != null)
+                                <img src="{{env('AWS_URL')}}/{{$item->image}}" alt="{{$item->name}}" width="60" class="img-thumbnail">
+                            @endif
+                        </td>
                         <td>
                             @if($item->root != null)
                                 {{$item->root->name}}

@@ -37,6 +37,16 @@
                         Bu alan boş bırakılamaz.
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="image">İkon Yükle</label>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="image" name="image" required>
+                        <label class="custom-file-label" for="image">Dosya seçiniz</label>
+                        <div class="invalid-feedback">
+                            Bu alan boş bırakılamaz.
+                        </div>
+                    </div>
+                </div>
                 <button type="submit" class="btn btn-primary">Kaydet</button>
             </form>
         </div>

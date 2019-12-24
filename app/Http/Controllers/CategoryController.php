@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
+use Faker\Provider\File;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Exception;
 
-class CategoryController extends Controller
+class CategoryController extends FileController
 {
     /**
      * Display a listing of the resource.
@@ -46,6 +47,10 @@ class CategoryController extends Controller
             $category = new Category();
             $category->name = $request->get('name');
             $category->parent_id = $request->get('parent_id');
+
+            if ($request->hasFile('image')) {
+                $category->image = $this->uploadFile('categories');
+            }
 
             $category->save();
 
@@ -89,6 +94,12 @@ class CategoryController extends Controller
     {
         $category->name = $request->get('name');
         $category->parent_id = $request->get('parent_id');
+
+        if ($request->hasFile('image')) {
+            $this->deleteFile($category->image);
+            $category->image = $this->uploadFile('categories');
+        }
+
         $category->save();
         return redirect()->to('/categories');
     }
@@ -103,6 +114,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         if ($category->isUsed() == false) {
+            $this->deleteFile($category->image);
             $category->delete();
         } else {
             throw new Exception('Sistemde bu kategoriye ait ürünler bulunmaktadır. Silinemez.');
