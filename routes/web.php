@@ -17,6 +17,7 @@ Route::get('/', 'ProductController@index')->middleware('auth');
 Route::resource('aliases', 'AliasController')->middleware('auth');
 Route::resource('brands', 'BrandController')->middleware('auth');
 Route::resource('categories', 'CategoryController')->middleware('auth');
+Route::get('/get-sub-categories/{id}', 'CategoryController@getSubCategories')->where('id', '[0-9]+')->middleware('auth');
 Route::resource('products', 'ProductController')->middleware('auth');
 
 Route::get('/login', 'LoginController@index');

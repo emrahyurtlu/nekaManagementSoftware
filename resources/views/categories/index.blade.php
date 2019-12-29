@@ -28,7 +28,7 @@
                             @endif
                         </td>
                         <td>
-                            @if($item->root != null)
+                            @if($item->parent_id != 0)
                                 {{$item->root->name}}
                             @else
                                 Üst kategori seçilmedi.

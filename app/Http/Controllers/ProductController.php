@@ -31,7 +31,7 @@ class ProductController extends FileController
      */
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::rootCategories();
         $brands = Brand::all();
         $massUnits = MassUnit::all();
         return view('products.create', ['categories' => $categories, 'brands' => $brands, 'massUnits' => $massUnits]);
@@ -51,8 +51,10 @@ class ProductController extends FileController
             $product->name = $request->get('name');
             $product->mass = $request->get('mass');
             $product->barcode = $request->get('barcode');
+            $product->package_barcode = $request->get('package_barcode');
             $product->brand_id = $request->get('brand_id');
             $product->category_id = $request->get('category_id');
+            $product->sub_category_id = $request->get('sub_category_id');
             $product->mass_unit_id = $request->get('mass_unit_id');
 
             if ($request->hasFile('image')) {
@@ -104,8 +106,10 @@ class ProductController extends FileController
         $product->name = $request->get('name');
         $product->mass = $request->get('mass');
         $product->barcode = $request->get('barcode');
+        $product->package_barcode = $request->get('package_barcode');
         $product->brand_id = $request->get('brand_id');
         $product->category_id = $request->get('category_id');
+        $product->sub_category_id = $request->get('sub_category_id');
         $product->mass_unit_id = $request->get('mass_unit_id');
 
         if ($request->hasFile('image')) {

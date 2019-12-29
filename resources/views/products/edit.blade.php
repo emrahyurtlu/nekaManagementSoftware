@@ -27,9 +27,18 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="barcode">Barkod</label>
+                    <label for="barcode">Ürün Barkodu</label>
                     <input type="text" class="form-control" id="barcode" name="barcode" placeholder="Lütfen barkod giriniz" required
                            value="{{$product->barcode}}"/>
+                    <div class="invalid-feedback">
+                        Bu alan boş bırakılamaz.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="package_barcode">Kutu/Koli Barkodu</label>
+                    <input type="text" class="form-control" id="package_barcode" name="package_barcode" placeholder="Lütfen kutu/koli barkodu giriniz"
+                           value="{{$product->package_barcode}}"/>
                     <div class="invalid-feedback">
                         Bu alan boş bırakılamaz.
                     </div>
@@ -55,6 +64,20 @@
                         @foreach($categories as $category)
                             <option value="{{$category->id}}" {{$product->category_id == $category->id ? 'selected' : '' }}>
                                 {{$category->name}}
+                            </option>
+                        @endforeach
+                    </select>
+                    <div class="invalid-feedback">
+                        Bu alan boş bırakılamaz.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="sub_category_id">Alt Kategori Seçiniz</label>
+                    <select class="custom-select" name="sub_category_id" id="sub_category_id" required>
+                        @foreach($product->category->subCategories as $subCategory)
+                            <option value="{{$subCategory->id}}" {{$product->sub_category_id == $subCategory->id ? 'selected' : '' }}>
+                                {{$subCategory->name}}
                             </option>
                         @endforeach
                     </select>

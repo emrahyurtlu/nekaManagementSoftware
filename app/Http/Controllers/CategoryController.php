@@ -19,7 +19,8 @@ class CategoryController extends FileController
     public function index()
     {
         $categories = Category::all();
-        $rootCategories = Category::all()->where('parent_id', '==', 0);
+        $rootCategories = Category::rootCategories();
+        //dd($rootCategories);
         return view('categories.index', ['categories' => $categories, 'rootCategories' => $rootCategories]);
     }
 
@@ -30,7 +31,7 @@ class CategoryController extends FileController
      */
     public function create()
     {
-        $rootCategories = Category::all()->where('parent_id', '==', 0);
+        $rootCategories = Category::rootCategories();
         return view('categories.create', ['rootCategories' => $rootCategories]);
     }
 
@@ -46,7 +47,7 @@ class CategoryController extends FileController
 
             $category = new Category();
             $category->name = $request->get('name');
-            $category->parent_id = $request->get('parent_id');
+            $category->parent_id = $request->get('parent_id', 0);
 
             if ($request->hasFile('image')) {
                 $category->image = $this->uploadFile('categories');
@@ -79,7 +80,7 @@ class CategoryController extends FileController
      */
     public function edit(Category $category)
     {
-        $rootCategories = Category::all()->where('parent_id', '==', 0);
+        $rootCategories = Category::rootCategories()->get();
         return view('categories.edit', ['category' => $category, 'rootCategories' => $rootCategories]);
     }
 
@@ -93,7 +94,7 @@ class CategoryController extends FileController
     public function update(Request $request, Category $category)
     {
         $category->name = $request->get('name');
-        $category->parent_id = $request->get('parent_id');
+        $category->parent_id = $request->get('parent_id', 0);
 
         if ($request->hasFile('image')) {
             $this->deleteFile($category->image);
@@ -120,5 +121,9 @@ class CategoryController extends FileController
             throw new Exception('Sistemde bu kategoriye ait ürünler bulunmaktadır. Silinemez.');
         }
 
+    }
+
+    public function getSubCategories($id) {
+        return Category::find($id)->subCategories();
     }
 }

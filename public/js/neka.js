@@ -3,6 +3,7 @@ require("select2")($);
 require("bootstrap");
 require("./form-validation");
 require("datatables.net-bs4")(window, $);
+window.axios = require('axios');
 
 $(document).ready(function () {
     $('.select2').select2({});
@@ -37,5 +38,24 @@ $(document).ready(function () {
                 });
             }
         }
-    })
+    });
+
+    $('#category_id').change(function (e) {
+        let selected = $(this).val();
+        console.log("Category: ", selected);
+        if (selected > -1) {
+            window.axios.get("/get-sub-categories/" + selected).then((result) => {
+                console.log(result.data);
+                if (result.data.length > 0) {
+                    $.each(result.data, function (index, value) {
+                        var option = "<option value='" + value.id + "'>" + value.name + "</option>";
+                        $("#sub_category_id").append(option);
+                    });
+
+                }
+            });
+
+        }
+
+    });
 });

@@ -13,7 +13,7 @@
                     </div>
                 @endforeach
             @endif
-            <form class="needs-validation" method="post" action="/categories/{{$category->id}}" novalidate>
+            <form class="needs-validation" method="post" action="/categories/{{$category->id}}" enctype="multipart/form-data" novalidate>
                 @csrf
                 {{method_field('PUT')}}
                 <div class="form-group">

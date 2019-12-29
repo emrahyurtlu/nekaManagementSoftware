@@ -23,9 +23,11 @@
         "sass-loader": "^7.1.0",
         "select2": "^4.0.12",
         "browserify": "^16.5.0",
-        "watchify": "^3.11.1"
+        "watchify": "^3.11.1",
+        "datatables.net-bs": "^1.10.20"
     },
     "dependencies": {
+        "datatables.net-bs4": "^1.10.20",
         "select2-bootstrap-css": "latest"
     }
 }

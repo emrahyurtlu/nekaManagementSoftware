@@ -13,7 +13,7 @@
                     </div>
                 @endforeach
             @endif
-            <form class="needs-validation" method="post" action="/categories" novalidate>
+            <form class="needs-validation" method="post" action="/categories" enctype="multipart/form-data" novalidate>
                 @csrf
                 <div class="form-group">
                     <label for="parent_id">Üst Kategori</label>
@@ -40,7 +40,7 @@
                 <div class="form-group">
                     <label for="image">İkon Yükle</label>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="image" name="image" required>
+                        <input type="file" class="custom-file-input" id="image" name="image">
                         <label class="custom-file-label" for="image">Dosya seçiniz</label>
                         <div class="invalid-feedback">
                             Bu alan boş bırakılamaz.

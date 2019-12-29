@@ -12,14 +12,16 @@ class Category extends Model
         return $product->isNotEmpty();
     }
 
-    public function subCategories()
+    public function scopeSubCategories($query)
     {
-        return Category::all()->where('parent_id', '==', $this->id);
+        return $query->where('parent_id', '=', $this->id)->get();
+        // return Category::all()->where('parent_id', '==', $this->id);
     }
 
-    public function rootCategories()
+    public function scopeRootCategories($query)
     {
-        return Category::all()->where('parent_id', '==', 0);
+        return $query->where('parent_id', '=', 0)->get();
+        //return Category::all()->where('parent_id', '==', 0);
     }
 
     public function rootCategory()

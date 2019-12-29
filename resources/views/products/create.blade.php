@@ -24,8 +24,16 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="barcode">Barkod</label>
+                    <label for="barcode">Ürün Barkodu</label>
                     <input type="text" class="form-control" id="barcode" name="barcode" placeholder="Lütfen barkod giriniz" required />
+                    <div class="invalid-feedback">
+                        Bu alan boş bırakılamaz.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="package_barcode">Kutu/Koli Barkodu</label>
+                    <input type="text" class="form-control" id="package_barcode" name="package_barcode" placeholder="Lütfen barkod giriniz" />
                     <div class="invalid-feedback">
                         Bu alan boş bırakılamaz.
                     </div>
@@ -49,12 +57,22 @@
                 <div class="form-group">
                     <label for="category_id">Kategori Seçiniz</label>
                     <select class="form-control select2" name="category_id" id="category_id" required>
-                        <option>Lütfen seçim yapınız</option>
+                        <option value="-1">Lütfen seçim yapınız</option>
                         @foreach($categories as $category)
                             <option value="{{$category->id}}">
                                 {{$category->name}}
                             </option>
                         @endforeach
+                    </select>
+                    <div class="invalid-feedback">
+                        Bu alan boş bırakılamaz.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="sub_category_id">Alt Kategori Seçiniz</label>
+                    <select class="form-control select2" name="sub_category_id" id="sub_category_id" required>
+                        <option value="-1">Lütfen seçim yapınız</option>
                     </select>
                     <div class="invalid-feedback">
                         Bu alan boş bırakılamaz.
