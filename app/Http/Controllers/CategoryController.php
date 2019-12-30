@@ -80,7 +80,7 @@ class CategoryController extends FileController
      */
     public function edit(Category $category)
     {
-        $rootCategories = Category::rootCategories()->get();
+        $rootCategories = Category::rootCategories();
         return view('categories.edit', ['category' => $category, 'rootCategories' => $rootCategories]);
     }
 

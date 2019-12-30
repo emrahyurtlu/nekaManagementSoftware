@@ -17,8 +17,10 @@
                     <th>Ürün Adı</th>
                     <th>Marka</th>
                     <th>Kategori</th>
+                    <th>Alt Kategori</th>
                     <th>Ağırlık</th>
                     <th>Barkod</th>
+                    <th>Kutu/Koli Barkodu</th>
                     <th>İşlemler</th>
                 </tr>
                 </thead>
@@ -31,8 +33,10 @@
                         <td>{{$item->name}}</td>
                         <td>{{$item->brand->name}}</td>
                         <td>{{$item->category->name}}</td>
+                        <td>{{$item->subCategory->name}}</td>
                         <td>{{$item->mass}} {{$item->massUnit->name}}</td>
                         <td>{{$item->barcode}}</td>
+                        <td>{{$item->package_barcode}}</td>
                         <td>
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"

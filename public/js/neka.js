@@ -47,6 +47,7 @@ $(document).ready(function () {
             window.axios.get("/get-sub-categories/" + selected).then((result) => {
                 console.log(result.data);
                 if (result.data.length > 0) {
+                    $("#sub_category_id").html("<option value='-1'>Lütfen seçim yapınız</option>");
                     $.each(result.data, function (index, value) {
                         var option = "<option value='" + value.id + "'>" + value.name + "</option>";
                         $("#sub_category_id").append(option);

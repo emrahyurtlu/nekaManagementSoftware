@@ -11,6 +11,11 @@ class Product extends Model
         return $this->hasOne('App\Models\Category', 'id', 'category_id');
     }
 
+    public function subCategory()
+    {
+        return $this->hasOne('App\Models\Category', 'id', 'sub_category_id');
+    }
+
     public function brand()
     {
         return $this->hasOne('App\Models\Brand', 'id', 'brand_id');

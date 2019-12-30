@@ -13,7 +13,8 @@
                     </div>
                 @endforeach
             @endif
-            <form class="needs-validation" method="post" action="/categories/{{$category->id}}" enctype="multipart/form-data" novalidate>
+            <form class="needs-validation" method="post" action="/categories/{{$category->id}}"
+                  enctype="multipart/form-data" novalidate>
                 @csrf
                 {{method_field('PUT')}}
                 <div class="form-group">
@@ -33,7 +34,8 @@
 
                 <div class="form-group">
                     <label for="name">Kategori Adı</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Örn: Süt Ürünleri" required
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Örn: Süt Ürünleri"
+                           required
                            value="{{$category->name}}"/>
                     <div class="invalid-feedback">
                         Bu alan boş bırakılamaz.
@@ -43,7 +45,10 @@
                 <div class="form-group">
                     <label for="image">İkon Yükle</label>
                     <div class="mb-2">
-                        <img src="{{env('AWS_URL')}}/{{$category->image}}" alt="{{$category->name}}" width="100" class="img-thumbnail">
+                        @if($category->image !== null)
+                            <img src="{{env('AWS_URL')}}/{{$category->image}}" alt="{{$category->name}}" width="100"
+                                 class="img-thumbnail">
+                        @endif
                     </div>
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="image" name="image">

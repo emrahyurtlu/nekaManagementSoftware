@@ -88,10 +88,11 @@ class ProductController extends FileController
      */
     public function edit(Product $product)
     {
-        $categories = Category::all();
+        $rootCategories = Category::rootCategories();
+        //dd($product->category->subCategories());
         $brands = Brand::all();
         $massUnits = MassUnit::all();
-        return view('products.edit', ['product' => $product, 'categories' => $categories, 'brands' => $brands, 'massUnits' => $massUnits]);
+        return view('products.edit', ['product' => $product, 'rootCategories' => $rootCategories, 'brands' => $brands, 'massUnits' => $massUnits]);
     }
 
     /**

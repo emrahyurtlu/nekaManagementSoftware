@@ -61,7 +61,7 @@
                 <div class="form-group">
                     <label for="category_id">Kategori Seçiniz</label>
                     <select class="custom-select" name="category_id" id="category_id" required>
-                        @foreach($categories as $category)
+                        @foreach($rootCategories as $category)
                             <option value="{{$category->id}}" {{$product->category_id == $category->id ? 'selected' : '' }}>
                                 {{$category->name}}
                             </option>
@@ -75,7 +75,7 @@
                 <div class="form-group">
                     <label for="sub_category_id">Alt Kategori Seçiniz</label>
                     <select class="custom-select" name="sub_category_id" id="sub_category_id" required>
-                        @foreach($product->category->subCategories as $subCategory)
+                        @foreach($product->category->subCategories() as $subCategory)
                             <option value="{{$subCategory->id}}" {{$product->sub_category_id == $subCategory->id ? 'selected' : '' }}>
                                 {{$subCategory->name}}
                             </option>
