@@ -19,7 +19,7 @@ class BrandController extends FileController
      */
     public function index()
     {
-        $brands = Brand::all();
+        $brands = Brand::all()->sortByDesc('id');
         return view('brands.index', ['brands' => $brands]);
     }
 
