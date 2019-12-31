@@ -20,7 +20,7 @@ class ProductController extends FileController
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::all()->sortByDesc('id');
         return view('products.index', ['products' => $products]);
     }
 

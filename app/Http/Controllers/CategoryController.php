@@ -18,7 +18,7 @@ class CategoryController extends FileController
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::all()->sortByDesc('id');
         $rootCategories = Category::rootCategories();
         //dd($rootCategories);
         return view('categories.index', ['categories' => $categories, 'rootCategories' => $rootCategories]);
